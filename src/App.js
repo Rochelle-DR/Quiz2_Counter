@@ -1,23 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+
+      <div className="card">
+
+        <h1 className="title">⚡ COUNTER ⚡</h1>
+
+        {/* Counter */}
+        <div className="counter-box">
+          <h2 className="counter">{count}</h2>
+        </div>
+
+        {/* Buttons */}
+        <div className="buttons">
+
+          <button
+            className="btn increase"
+            onClick={() => setCount(count + 1)}
+          >
+            + Increase
+          </button>
+
+          <button
+            className="btn decrease"
+            onClick={() => setCount(count - 1)}
+          >
+            - Decrease
+          </button>
+
+          <button
+            className="btn reset"
+            onClick={() => setCount(0)}
+          >
+            Reset
+          </button>
+
+        </div>
+
+        {count >= 5 && (
+          <div className="goal">
+            🚀 Goal Reached!
+          </div>
+        )}
+
+        {/* Input */}
+        <div className="input-section">
+
+          <input
+            type="text"
+            placeholder="Enter message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+
+          <p className="message">
+            💬 {message}
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
   );
 }
